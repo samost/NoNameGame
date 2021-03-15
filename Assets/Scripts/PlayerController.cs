@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
    private Animator _animator;
 
    private bool _weapon;
+   private bool _pistol;
    
    public float speed;
    public float gravity;
@@ -55,10 +56,16 @@ public class PlayerController : MonoBehaviour {
 
 	   
 	   
-	   if (Input.GetKeyUp(KeyCode.R))
+	   if (Input.GetKeyDown(KeyCode.R))
 	   {
 		   _weapon = ! _weapon;
 		   _animator.SetBool("isWeapon", _weapon);
+	   }
+	   
+		if (Input.GetKeyDown(KeyCode.P))
+	   {
+		   _pistol = ! _pistol;
+		   _animator.SetBool("isPistol", _pistol);
 	   }
 		
    }
