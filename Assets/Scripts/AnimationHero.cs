@@ -1,13 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AnimationHero : MonoBehaviour
 {
     public PlayerController playerController;
     public Animator anim;
     public WeaponSwitch weaponSwitch;
+    public Animator gunAnimator;
+    public Animator pistolAnimator;
+    
 
 
     void Update()
+    {
+        MoveAnimation();
+
+        CurrentGunAnimation();
+    }
+
+    private void MoveAnimation()
     {
         if (playerController.joystick.direction != Vector2.zero)
         {
@@ -17,8 +28,6 @@ public class AnimationHero : MonoBehaviour
         {
             anim.SetInteger("State", 0);
         }
-
-        CurrentGunAnimation();
     }
 
 
@@ -43,6 +52,31 @@ public class AnimationHero : MonoBehaviour
                 break;
         }
     }
+    
+    public void Fire(bool state)
+    {
+       
+        switch (weaponSwitch.currentWeapon)
+        {
+            case WeaponSwitch.GunType.Pistol:
+                pistolAnimator.SetBool("isPistolGun", state);
+                anim.SetBool("isPistolGun", state);
+                break;
+            case WeaponSwitch.GunType.Gun:
+                gunAnimator.SetBool("isFireGun", state);
+                anim.SetBool("isFireGun", state);
+
+                break;
+            case WeaponSwitch.GunType.MeleeWeapon:
+                anim.SetBool("isGun", state);
+                anim.SetBool("isMeleeWeapon", state);
+                anim.SetBool("isPistol", state);
+                break;
+        }
+    }
+    
+    
+    
     
     
 }

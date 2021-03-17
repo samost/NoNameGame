@@ -21,9 +21,9 @@ public class Joystick : MonoBehaviour
     {
 
         Vector2 pos = Input.mousePosition;
-        if (pos.x < Screen.width / 2 && Input.touchCount == 1)
-        {
-            if (Input.GetMouseButtonDown(0))
+        // if (pos.x < Screen.width / 2 && Input.touchCount < 2)
+        // {
+            if (Input.GetMouseButtonDown(0) )
             {
                 ShowHide(true);
                 start = pos;
@@ -33,10 +33,13 @@ public class Joystick : MonoBehaviour
             }
             else if (Input.GetMouseButton(0))
             {
+                if (Input.mousePosition.x < Screen.width / 2)
+                {
+                    knob.position = pos;
+                                    
+                    knob.position = center.position + Vector3.ClampMagnitude(knob.position - center.position, center.sizeDelta.x * range);
+                }
                 
-                knob.position = pos;
-                knob.position = center.position +
-                                Vector3.ClampMagnitude(knob.position - center.position, center.sizeDelta.x * range);
 
                 if (knob.position != Input.mousePosition && !fixedJoystick)
                 {
@@ -53,7 +56,7 @@ public class Joystick : MonoBehaviour
             }
             
             
-        }
+        
        
     }
 

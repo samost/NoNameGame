@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,6 +7,11 @@ public class UIController : MonoBehaviour
 {
     [SerializeField]
     public WeaponSwitch weaponSwitch;
+
+    public AnimationHero animationHero;
+    
+    
+    
     
     public void RefreshCurrentWeapon()
     {
@@ -24,6 +30,11 @@ public class UIController : MonoBehaviour
         Debug.Log(weaponSwitch.currentWeapon);
     }
 
-
+   
     
+    
+    
+    
+
+   
 }

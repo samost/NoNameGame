@@ -35,9 +35,7 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection = new Vector3(direction.x, 0, direction.y);
 
-            Quaternion targetRotation = moveDirection != Vector3.zero
-                ? Quaternion.LookRotation(moveDirection)
-                : transform.rotation;
+            Quaternion targetRotation = moveDirection != Vector3.zero ? Quaternion.LookRotation(moveDirection) : transform.rotation;
             transform.rotation = targetRotation;
             moveDirection = moveDirection * speed;
         }
