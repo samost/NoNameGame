@@ -2,7 +2,7 @@
 
 public class WeaponSwitch : MonoBehaviour
 {
-    public GunType currentWeapon = 0;
+    public WeaponType currentWeapon = 0;
 
     private void Update()
     {
@@ -28,12 +28,12 @@ public class WeaponSwitch : MonoBehaviour
     
     
 
-    public enum GunType
-    {
-        Pistol,
-        Gun,
-        MeleeWeapon
-    }
+    // public enum GunType
+    // {
+    //     Pistol,
+    //     Gun,
+    //     MeleeWeapon
+    // }
 
     public void RefreshCurrentWeapon()
     {
@@ -48,4 +48,5 @@ public class WeaponSwitch : MonoBehaviour
             currentWeapon = 0;
         }
     }
+    
 }

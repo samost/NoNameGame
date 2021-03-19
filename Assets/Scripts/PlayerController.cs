@@ -25,22 +25,31 @@ public class PlayerController : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 direction = joystick.direction;
-
         
+
+
+            Vector2 direction = joystick.direction;
+
+
+
+            if (controller.isGrounded)
+            {
+                moveDirection = new Vector3(direction.x, 0, direction.y);
+
+                // Quaternion targetRotation = moveDirection != Vector3.zero ? Quaternion.LookRotation(moveDirection) : transform.rotation;
+                // transform.rotation = targetRotation;
+                
+                Quaternion lookRotation = moveDirection != Vector3.zero ? Quaternion.LookRotation(moveDirection) : transform.rotation;
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+                
+               
+                moveDirection = moveDirection * speed;
+            }
+
+            moveDirection.y = moveDirection.y - (gravity * Time.deltaTime) ;
+            controller.Move(moveDirection * Time.deltaTime);
         
-        if (controller.isGrounded)
-        {
-            moveDirection = new Vector3(direction.x, 0, direction.y);
-
-            Quaternion targetRotation = moveDirection != Vector3.zero ? Quaternion.LookRotation(moveDirection) : transform.rotation;
-            transform.rotation = targetRotation;
-            moveDirection = moveDirection * speed;
-        }
-
-        moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
-        controller.Move(moveDirection * Time.deltaTime);
     }
 }

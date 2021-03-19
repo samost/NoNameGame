@@ -35,17 +35,17 @@ public class AnimationHero : MonoBehaviour
     {
         switch (weaponSwitch.currentWeapon)
         {
-            case WeaponSwitch.GunType.Pistol:
+            case WeaponType.Pistol:
                 anim.SetBool("isGun", false);
                 anim.SetBool("isMeleeWeapon", false);
                 anim.SetBool("isPistol", true);
                 break;
-            case WeaponSwitch.GunType.Gun:
+            case WeaponType.Gun:
                 anim.SetBool("isGun", true);
                 anim.SetBool("isMeleeWeapon", false);
                 anim.SetBool("isPistol", false);
                 break;
-            case WeaponSwitch.GunType.MeleeWeapon:
+            case WeaponType.MeleeWeapon:
                 anim.SetBool("isGun", false);
                 anim.SetBool("isMeleeWeapon", true);
                 anim.SetBool("isPistol", false);
@@ -58,16 +58,16 @@ public class AnimationHero : MonoBehaviour
        
         switch (weaponSwitch.currentWeapon)
         {
-            case WeaponSwitch.GunType.Pistol:
+            case WeaponType.Pistol:
                 pistolAnimator.SetBool("isPistolGun", state);
                 anim.SetBool("isPistolGun", state);
                 break;
-            case WeaponSwitch.GunType.Gun:
+            case WeaponType.Gun:
                 gunAnimator.SetBool("isFireGun", state);
                 anim.SetBool("isFireGun", state);
 
                 break;
-            case WeaponSwitch.GunType.MeleeWeapon:
+            case WeaponType.MeleeWeapon:
                 anim.SetBool("isGun", state);
                 anim.SetBool("isMeleeWeapon", state);
                 anim.SetBool("isPistol", state);
